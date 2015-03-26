@@ -15,6 +15,7 @@ whatweb_bin =  Popen([which_bin, 'whatweb'], stdout=PIPE).communicate()[0].repla
 joomscan_bin = Popen([which_bin, 'joomscan'], stdout=PIPE).communicate()[0].replace('\n', '')
 
 tools_folder = '%s/.config/audits' % os.getenv("HOME")
+output_folder = '%s/output' % tools_folder
 
 user_agent = 'ParsersWrapper/%s' % version
 
@@ -45,7 +46,7 @@ try:
     if hasattr(parsers_settings, 'WW_FAST'): WW_FAST = parsers_settings.WW_FAST or WW_FAST
 
     if hasattr(parsers_settings, 'tools_name'): tools_name = parsers_settings.tools_name or tools_name
-    if hasattr(parsers_settings, 'output_folder'): output_folder = parsers_settings.output_folder or ("%s/output" % tools_folder)
+    if hasattr(parsers_settings, 'output_folder'): output_folder = parsers_settings.output_folder or output_folder
 
     if hasattr(parsers_settings, 'which_bin'): which_bin = parsers_settings.which_bin
 
