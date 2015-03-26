@@ -6,12 +6,12 @@ import os
 
 version = "0.0.1"
 home = os.getenv("HOME")
-file_path = os.path.realpath(__file__)
+file_path = os.path.realpath(__file__).rsplit('/', 1)[0]
 
 class bcolors:
     FAIL = '\033[91m'
     ENF  = '\033[1m'
-    OK  = '\033[51m'
+    OK  = '\033[92m'
     ENDC = '\033[0m'
 
 tools_folder = '%s/.config/audits' % home

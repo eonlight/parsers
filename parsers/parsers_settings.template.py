@@ -30,4 +30,4 @@ which_bin = '/usr/bin/which'
 
 DEBUG = False
 NMAP_FAST = False
-WW_FAST = False
+WW_FAST = True

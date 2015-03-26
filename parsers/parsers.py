@@ -433,7 +433,7 @@ class WhatWebParser():
 
         if not url or not self.executable:
             if settings.DEBUG:
-                print '%s - NMapParser - execute - No url or no executable...' % str(datetime.now())
+                print '%s - WhatWebParser - execute - No url or no executable...' % str(datetime.now())
             return None
 
         #if 'http://' not in url and 'https://' not in url:
@@ -488,8 +488,10 @@ class WhatWebParser():
             return WhatWebParser.parse_output(result)
 
         log = self.log or '%s/%s.whatweb.json' % (settings.output_folder, settings.tools_name)
-        with open(log, 'r') as f:
-            result = f.readline()
+        # get last line
+        for result in open(log, 'r'):
+            pass
+
 
         if not settings.DEBUG:
             with open(log, 'w'):
