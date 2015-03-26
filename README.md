@@ -9,15 +9,17 @@ Module with parsers that run various tools and return the result in json.
 * sqlmap
 * whatweb
 
-## Instalation
+## Installation
 
-pip install git+https://github.com/eonlight/parsers
+`pip install git+https://github.com/eonlight/parsers`
 
 or
 
+```
 git clone https://github.com/eonlight/parsers
 cd parsers
-./setup install
+./setup.py install
+```
 
 ## Configuration
 
