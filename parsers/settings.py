@@ -4,7 +4,7 @@ from sys import stderr, path, exit
 import inspect
 import os
 
-version = '0.0.2'
+version = '0.0.3'
 
 which_bin = '/usr/bin/which'
 

@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 from sys import exit, argv
 import os
 
-version = "0.0.2"
+version = "0.0.3"
 home = os.getenv("HOME")
 file_path = os.path.realpath(__file__).rsplit('/', 1)[0]
 
