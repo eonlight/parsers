@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 from sys import exit, argv
 import os
 
-version = "0.0.1"
+version = "0.0.2"
 home = os.getenv("HOME")
 file_path = os.path.realpath(__file__).rsplit('/', 1)[0]
 
@@ -56,5 +56,5 @@ setup(
     author_email='rcadima@gmail.com',
     description='Audit Tools Parsers',
     keywords=['audit', 'tools', 'parsers', 'sqlmap', 'wpscan', 'joomscan', 'whatweb', 'nmap'],
-    long_description=""" Module with parsers that run various tools and return the result in json """
+    long_description=""" Module with parsers that run various tools and return the result in json. """
 )

@@ -4,7 +4,7 @@ from sys import stderr, path, exit
 import inspect
 import os
 
-version = '0.0.1'
+version = '0.0.2'
 
 which_bin = '/usr/bin/which'
 
@@ -85,11 +85,4 @@ try:
 
     if hasattr(parsers_settings, 'SQLMAP_OPTIONS'):  SQLMAP_OPTIONS = parsers_settings.SQLMAP_OPTIONS or SQLMAP_OPTIONS
 except ImportError:
-    stderr.write('%s - settings - parsers local settings not found...\n' % str(datetime.now()))
-
-if not os.path.exists(output_folder):
-    try:
-        os.mkdir(output_folder)
-    except OSError:
-        print '\033[91mNo permission to create %s.\033[0m' % output_folder
-        exit(0)
+    stderr.write('%s - settings - parsers local settings not found.\n' % str(datetime.now()))
