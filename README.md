@@ -34,3 +34,19 @@ cd parsers
     * WhatWeb - https://github.com/urbanadventurer/WhatWeb
 
 * The config file also has the option to change the arguments passed to each tool
+
+## To Do List
+
+* Make Nmap Parser a little bit more intelligent to report more data other than versions
+
+## ChangeLog
+
+### version 0.1.0 (current)
+
+* NMapParser is more intelligent
+* Now returns a json result with product, name and version
+
+### version 0.0.3
+
+* Initial official verison
+* Fixes bugs

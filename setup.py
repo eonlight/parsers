@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 from sys import exit, argv
 import os
 
-version = "0.0.3"
+version = "0.1.0"
 home = os.getenv("HOME")
 file_path = os.path.realpath(__file__).rsplit('/', 1)[0]
 
@@ -20,7 +20,7 @@ settings_filename = '%s/parsers_settings.py' % tools_folder
 if 'install' in argv or 'develop' in argv:
     if not os.path.exists(tools_folder):
         try:
-            os.mkdir(tools_folder)
+            os.makedirs(tools_folder)
         except OSError:
             print '%sNo permission to create %s.%s' % (bcolors.FAIL, tools_folder, bcolors.ENDC)
             exit(0)

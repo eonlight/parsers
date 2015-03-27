@@ -3,13 +3,13 @@
 tools_name = 'parsers'
 tools_folder = '{{ home }}/.config/audits'
 output_folder = '{{ home }}/.config/audits/output'
-user_agent = 'SapoParsers/{{ version }}'
+user_agent = 'Parsers/{{ version }}'
 
-NMAP_OPTIONS = ['-Pn', '-sC', '-p', '1-65535']
-NMAP_OPTIONS_FAST = ['-Pn'];
+NMAP_OPTIONS = ['-sV', '-T4', '-p', '1-65535']
+NMAP_OPTIONS_FAST = ['-sV', '-T4'];
 
-WHATWEB_OPTIONS = ['-t', '10', '--user-agent', user_agent, '--no-errors', '--color', 'never', '-a', '4']
-WHATWEB_FAST_OPTIONS = ['-t', '10', '--user-agent', user_agent, '--no-errors', '--color', 'never', '-a', '2']
+WHATWEB_OPTIONS = ['-t', '4', '--user-agent', user_agent, '--no-errors', '--color', 'never', '-a', '4']
+WHATWEB_FAST_OPTIONS = ['-t', '4', '--user-agent', user_agent, '--no-errors', '--color', 'never', '-a', '2']
 
 WPSCAN_OPTIONS = ['--follow-redirection', '--threads', '2', '--force', '-a', user_agent, '--no-color', '--batch', '--enumerate', 'upt']
 WPSCAN_PASSWORDS_FILE = '%s/passwords.txt' % tools_folder
@@ -29,5 +29,5 @@ which_bin = '/usr/bin/which'
 # other options
 
 DEBUG = False
-NMAP_FAST = False
+NMAP_FAST = True
 WW_FAST = True

@@ -3,6 +3,9 @@ import json
 import os
 import re
 
+# for nmap parser
+import xml.etree.ElementTree as ET
+
 # for error handdling
 from datetime import datetime
 from sys import stderr
@@ -381,14 +384,16 @@ class NMapParser():
 
         url = url.replace('http://', '').replace('https://', '')
 
-        params = self.executable + (settings.NMAP_OPTIONS_FAST if settings.NMAP_FAST else settings.NMAP_OPTIONS) + [url]
+        LOCAL_OPTIONS = ['-oX', '%s/%s.nmap.xml' % ( settings.output_folder, settings.tools_name), url]
+
+        params = self.executable + (settings.NMAP_OPTIONS_FAST if settings.NMAP_FAST else settings.NMAP_OPTIONS) + LOCAL_OPTIONS
         try:
             with open(os.devnull, "w") as fnull:
                 self.result = Popen(params, stdout=PIPE, stderr=fnull).communicate()[0]
         except(ValueError, Exception) as e:
             if settings.DEBUG:
                 stderr.write(traceback.format_exc())
-            stderr.write("%s - NMapParser - parse - Error while executing nmap: %s\n" % (str(datetime.now()), e.message))
+            stderr.write("%s - NMapParser - execute - Error while executing nmap: %s\n" % (str(datetime.now()), e.message))
 
         if os.path.exists(settings.output_folder) and os.path.isdir(settings.output_folder):
             directory = '%s/%s' % (settings.output_folder, url.replace('http://', '').replace('https://', '').split('/')[0])
@@ -413,8 +418,34 @@ class NMapParser():
     def parse(self, result=None):
         if settings.DEBUG:
             print '%s - NMapParser - parse - Starting to parse nmap result...' % str(datetime.now())
-        result = result or self.result
-        return result
+
+        output = '%s/%s.nmap.xml' % (settings.output_folder, settings.tools_name)
+
+        parsed_result = {}
+
+        try:
+            root = ET.parse(output).getroot()
+            for port in root.iter('port'):
+                service = port.find('service').attrib
+
+                if not 'product' in service and not 'name' in service:
+                    continue
+
+                key = service['product'] if 'product' in service else service['name']
+                key = key.lower()
+
+                if key == 'apache httpd':
+                    key = 'apache'
+
+                parsed_result[key] = {'name': service['name'], 'version': service['version'] if 'version' in service else ''}
+
+        except (AttributeError, Exception) as e:
+            if settings.DEBUG:
+                stderr.write(traceback.format_exc())
+            stderr.write("%s - NMapParser - parse - Error while parsing nmap output: %s\n" % (str(datetime.now()), e.message))
+            return result if result != None else self.result
+
+        return parsed_result
 
 
 class WhatWebParser():
