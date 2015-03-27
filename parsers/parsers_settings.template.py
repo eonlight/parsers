@@ -28,6 +28,6 @@ which_bin = '/usr/bin/which'
 
 # other options
 
-DEBUG = False
+DEBUG = {{ debug }}
 NMAP_FAST = True
 WW_FAST = True

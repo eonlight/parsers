@@ -4,7 +4,7 @@ from sys import stderr, path, exit
 import inspect
 import os
 
-version = '0.1.0'
+version = '0.1.1'
 
 which_bin = '/usr/bin/which'
 
@@ -75,15 +75,15 @@ except ImportError:
 
 
 if not '/' in joomscan_bin:
-    stderr.write('\033[91mNo full path to the \033[0m\033[1mjoomscan\033[0m \033[91mbinary\033[0m\n')
+    stderr.write('\033[91mWarning: No full path to the \033[0m\033[1mjoomscan\033[0m \033[91mbinary\033[0m\n')
 if not '/' in wpscan_bin:
-    stderr.write('\033[91mNo full path to the \033[0m\033[1mwpscan\033[0m \033[91mbinary\033[0m\n')
+    stderr.write('\033[91mWarning: No full path to the \033[0m\033[1mwpscan\033[0m \033[91mbinary\033[0m\n')
 if not '/' in sqlmap_bin:
-    stderr.write('\033[91mNo full path to the \033[0m\033[1msqlmap\033[0m \033[91mbinary\033[0m\n')
+    stderr.write('\033[91mWarning: No full path to the \033[0m\033[1msqlmap\033[0m \033[91mbinary\033[0m\n')
 if not '/' in whatweb_bin:
-    stderr.write('\033[91mNo full path to the \033[0m\033[1mwhatweb\033[0m \033[91mbinary\033[0m\n')
+    stderr.write('\033[91mWarning: No full path to the \033[0m\033[1mwhatweb\033[0m \033[91mbinary\033[0m\n')
 if not '/' in nmap_bin:
-    stderr.write('\033[91mNo full path to the \033[0m\033[1mnmap\033[0m \033[91mbinary\033[0m\n')
+    stderr.write('\033[91mWarning: No full path to the \033[0m\033[1mnmap\033[0m \033[91mbinary\033[0m\n')
 
 try:
     if not os.path.exists(output_folder):

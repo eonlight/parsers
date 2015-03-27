@@ -41,7 +41,11 @@ cd parsers
 
 ## ChangeLog
 
-### version 0.1.0 (current)
+### version 0.1.1 (current)
+
+* Improves setup with pre instalation scripts
+
+### version 0.1.0
 
 * NMapParser is more intelligent
 * Now returns a json result with product, name and version
